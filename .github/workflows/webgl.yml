@@ -55,7 +55,7 @@ jobs:
 
   deployPages:
     needs: buildWebGL
-    name: Deploy to Github Pages
+    name: Deploy to Github Pages 🚀
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -66,12 +66,8 @@ jobs:
           name: build-WebGL
           path: build
 
-      - name: Display structure of root files
-        run: ls -R
-        working-directory: build/WebGL
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: build/WebGL
