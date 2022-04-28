@@ -1,4 +1,4 @@
-name: GameCI Win Build 🎮
+name: Win Build 🎮
 
 on:
   workflow_dispatch:

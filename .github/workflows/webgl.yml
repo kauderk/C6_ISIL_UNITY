@@ -1,4 +1,4 @@
-name: CI Build WebGL gh-pages 🎮
+name: WebGL gh-pages 🎮
 
 on:
   workflow_dispatch:
