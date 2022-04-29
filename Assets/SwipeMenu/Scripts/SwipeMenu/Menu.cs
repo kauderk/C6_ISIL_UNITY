@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace SwipeMenu
 {
@@ -34,6 +35,8 @@ namespace SwipeMenu
         /// The menu items. The items are audto parented to this transform.
         /// </summary>
         public MenuItem[] menuItems;
+
+        public UnityEvent OnAnimationComplete;
 
 
         private float _centreOffset = 1.0f;
@@ -122,7 +125,12 @@ namespace SwipeMenu
             float offset = CalcPosXInverse(item.transform.position.x);
 
             iTween.ValueTo(gameObject, iTween.Hash("from", _currentMenuPosition, "to", _currentMenuPosition + offset,
-                                                     "time", 0.5, "easetype", iTween.EaseType.easeOutCubic, "onupdate", "UpdateCurrentMenuPosition"));
+                                                     "time", 0.5, "easetype", iTween.EaseType.easeOutCubic, "onupdate", "UpdateCurrentMenuPosition", "oncomplete", "_AnimationComplete"));
+        }
+
+        void _AnimationComplete()
+        {
+            OnAnimationComplete?.Invoke();
         }
 
         /// <summary>
