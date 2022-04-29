@@ -44,12 +44,12 @@ public class SceneController : MonoBehaviour
         Debug.Log("Hello " + x);
     }
 
-    public async UniTask LoadScene(int index, float duration = 1, float waitTime = 2)
+    public async UniTask LoadScene<T>(T sceneID, float duration = 1, float waitTime = 2)
     {
-        await FadeScene(index, duration, waitTime);
+        await FadeScene(sceneID, duration, waitTime);
     }
 
-    async UniTask FadeScene(int index, float duration, float waitTime)
+    async UniTask FadeScene<T>(T sceneID, float duration, float waitTime)
     {
         ToogleFader(true);
 
@@ -57,7 +57,10 @@ public class SceneController : MonoBehaviour
 
         await UniTask.Delay(TimeSpan.FromSeconds(waitTime), ignoreTimeScale: false);
 
-        var ao = SceneManager.LoadSceneAsync(index);
+        var ao = typeof(T) == typeof(int)
+            ? SceneManager.LoadSceneAsync((int)(object)sceneID)
+            : SceneManager.LoadSceneAsync((string)(object)sceneID); // https://stackoverflow.com/questions/4092393/value-of-type-t-cannot-be-converted-to#:~:text=string%20newT2%20%3D%20(string)(object)t%3B
+
         while (!ao.isDone)
             await UniTask.Yield();
 

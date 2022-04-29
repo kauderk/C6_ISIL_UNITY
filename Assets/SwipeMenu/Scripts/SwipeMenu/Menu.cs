@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System;
 
 namespace SwipeMenu
 {
@@ -37,6 +38,7 @@ namespace SwipeMenu
         public MenuItem[] menuItems;
 
         public UnityEvent OnAnimationComplete;
+        private MenuItem _currentItem;
 
 
         private float _centreOffset = 1.0f;
@@ -68,6 +70,7 @@ namespace SwipeMenu
             {
                 _instance = this;
             }
+            _currentItem = menuItems[Mathf.Clamp(startingMenuItem - 1, 1, menuItems.Length)];
 
             distanceBetweenMenus -= IsDivisble(distanceBetweenMenus, 0.5f);
 
@@ -91,7 +94,6 @@ namespace SwipeMenu
             {
                 _swipeHandler = gameObject.AddComponent<SwipeHandler>();
             }
-
         }
 
 
@@ -122,12 +124,17 @@ namespace SwipeMenu
         /// <param name="item">Item.</param>
         public void AnimateToTargetItem(MenuItem item)
         {
+            _currentItem = item;
             float offset = CalcPosXInverse(item.transform.position.x);
 
             iTween.ValueTo(gameObject, iTween.Hash("from", _currentMenuPosition, "to", _currentMenuPosition + offset,
                                                      "time", 0.5, "easetype", iTween.EaseType.easeOutCubic, "onupdate", "UpdateCurrentMenuPosition", "oncomplete", "_AnimationComplete"));
         }
 
+        public int getCurrentItem()
+        {
+            return Array.IndexOf(menuItems, _currentItem);
+        }
         void _AnimationComplete()
         {
             OnAnimationComplete?.Invoke();
