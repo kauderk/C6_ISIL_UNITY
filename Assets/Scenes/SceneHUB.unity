@@ -466,10 +466,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 208200620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738a331d66ae80a478c1dcd81255aef8, type: 3}
+  m_Script: {fileID: 11500000, guid: a79522a8e8ea17943a4cdc56dc1f6ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneData: {fileID: 11400000, guid: fd0f914ddcd462d4f9242a34be4ca9e1, type: 2}
+  scriptableObject: {fileID: 11400000, guid: fd0f914ddcd462d4f9242a34be4ca9e1, type: 2}
 --- !u!1 &226242746
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,10 +780,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 739681297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738a331d66ae80a478c1dcd81255aef8, type: 3}
+  m_Script: {fileID: 11500000, guid: a79522a8e8ea17943a4cdc56dc1f6ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneData: {fileID: 11400000, guid: 6b2ca2cf697c974489de5ecc2e272cdf, type: 2}
+  scriptableObject: {fileID: 11400000, guid: 6b2ca2cf697c974489de5ecc2e272cdf, type: 2}
 --- !u!1 &827845290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 106802, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
@@ -798,10 +798,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 827845290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738a331d66ae80a478c1dcd81255aef8, type: 3}
+  m_Script: {fileID: 11500000, guid: a79522a8e8ea17943a4cdc56dc1f6ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneData: {fileID: 11400000, guid: 47e603fa136e07a48b6ddce65ead6f9f, type: 2}
+  scriptableObject: {fileID: 11400000, guid: 47e603fa136e07a48b6ddce65ead6f9f, type: 2}
 --- !u!1 &952294594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1124,6 @@ GameObject:
   - component: {fileID: 1352158554}
   - component: {fileID: 1352158553}
   - component: {fileID: 1352158552}
-  - component: {fileID: 1352158555}
   m_Layer: 5
   m_Name: Btn LoadScene
   m_TagString: Untagged
@@ -1209,12 +1208,12 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1895561178}
-        m_TargetAssemblyTypeName: MenuSceneTrigger, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoaderUtils, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1895561175}
+          m_ObjectArgumentAssemblyTypeName: SwipeMenu.Menu, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1258,18 +1257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352158550}
   m_CullTransparentMesh: 1
---- !u!114 &1352158555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352158550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e528c91ea46f4246868ad278283db57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1361854928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2031,10 +2018,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895561172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dec49c9b7eeb02419a408ccf5078e58, type: 3}
+  m_Script: {fileID: 11500000, guid: a79522a8e8ea17943a4cdc56dc1f6ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuRef: {fileID: 1895561175}
+  scriptableObject: {fileID: 0}
 --- !u!1 &1904660190
 GameObject:
   m_ObjectHideFlags: 0
