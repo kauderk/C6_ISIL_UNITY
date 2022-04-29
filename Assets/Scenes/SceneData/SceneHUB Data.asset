@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: SceneHUB
   LoadingScreen: {fileID: 21300048, guid: 26f49c2295b764965b7a3d346d2ca73d, type: 3}
-  Scene: {fileID: 102900000, guid: c7e2a27c678976e44bae0e4efd807ffd, type: 3}
+  Scene:
+    sceneAsset: {fileID: 102900000, guid: c7e2a27c678976e44bae0e4efd807ffd, type: 3}
+    scenePath: Assets/Scenes/SceneHUB.unity
   additiveScenes: []

@@ -13,12 +13,14 @@ public class SO_SceneData : ScriptableObject
 {
     public string Name;
     public Sprite LoadingScreen;
-    public SceneAsset Scene;
+    public SceneReference Scene;
     public List<string> additiveScenes = new List<string>();
 
     public async void Enter()
     {
-        await SceneController.Instance.LoadScene(Scene.name);
+        // get name form scene path
+        var name = LoaderUtilsStatic.getSceneName(Scene);
+        await SceneController.Instance.LoadScene(name);
     }
 
     void Update()
