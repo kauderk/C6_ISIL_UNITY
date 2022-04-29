@@ -10,6 +10,8 @@ public class FreeFlyCamera : MonoBehaviour
 {
     #region UI
 
+    public bool unlockOnDisable = true;
+
     [Space]
 
     [SerializeField]
@@ -107,6 +109,14 @@ public class FreeFlyCamera : MonoBehaviour
     {
         if (_active)
             _wantedMode = CursorLockMode.Locked;
+    }
+    private void OnDisable()
+    {
+        if (unlockOnDisable)
+        {
+            _wantedMode = CursorLockMode.None;
+            SetCursorState();
+        }
     }
 
     // Apply requested cursor state
