@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SceneHUB.unity
+    guid: c7e2a27c678976e44bae0e4efd807ffd
+  - enabled: 1
     path: Assets/Skybox/Scene/mainScene.unity
     guid: 7540eab4397561d4cb2a37cb06761818
+  - enabled: 1
+    path: Assets/SwipeMenu/Scenes/Character Selection Example Scene.unity
+    guid: 5d7a6890d0d10460bac0d3d1d9962afa
+  - enabled: 1
+    path: Assets/SwipeMenu/Scenes/Music Player Example Scene.unity
+    guid: 4a7ea86be7a2846bbaf7ada573d52a36
+  - enabled: 1
+    path: Assets/SwipeMenu/Scenes/Multiple Menu Scene.unity
+    guid: 9b823e145d6bf4e69bcedd2bcf86799c
+  - enabled: 1
+    path: Assets/SwipeMenu/Scenes/Flat Menu Scene.unity
+    guid: 781980a0a7a9f4dd18bc0716fd5a203e
+  - enabled: 1
+    path: Assets/SwipeMenu/Scenes/Classic Flow Scene.unity
+    guid: fd973865a855b4dceaadbe456bfb5a7a
   m_configObjects: {}
