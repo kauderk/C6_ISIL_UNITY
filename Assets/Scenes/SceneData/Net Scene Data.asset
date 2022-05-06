@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: NetScene
   LoadingScreen: {fileID: 21300010, guid: 16f33df0762854b1b9d862a7564213b4, type: 3}
   Scene:
-    sceneAsset: {fileID: 102900000, guid: 9b823e145d6bf4e69bcedd2bcf86799c, type: 3}
-    scenePath: Assets/SwipeMenu/Scenes/Multiple Menu Scene.unity
+    sceneAsset: {fileID: 102900000, guid: 94fd00f64d4ff6143b3772eedbf28cf7, type: 3}
+    scenePath: Assets/Scenes/s4-net-scene.unity
   additiveScenes: []
