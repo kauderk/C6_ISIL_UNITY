@@ -23,6 +23,12 @@ public class LoaderUtils : MonoBehaviour
     {
         await SceneController.Instance.LoadScene(nameOrPath);
     }
+    public async void LoadScene(LoaderUtils loader)
+    {
+        var data = (SO_SceneData)loader.scriptableObject;
+        var id = LoaderUtilsStatic.getSceneName(data.Scene);
+        await SceneController.Instance.LoadScene(id);
+    }
 
 }
 

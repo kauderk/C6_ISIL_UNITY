@@ -13,6 +13,9 @@ public class SceneController : MonoBehaviour
     public Toggle GlobalVolumeToogle;
     public static SceneController Instance;
 
+    event Action OnFaderLoaded;
+    public bool isForcedToLoad = false;
+
     public void ToogleFader(bool b) => fader.gameObject.SetActive(b);
 
     void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
@@ -61,12 +64,14 @@ public class SceneController : MonoBehaviour
             ? SceneManager.LoadSceneAsync((int)(object)sceneID)
             : SceneManager.LoadSceneAsync((string)(object)sceneID); // https://stackoverflow.com/questions/4092393/value-of-type-t-cannot-be-converted-to#:~:text=string%20newT2%20%3D%20(string)(object)t%3B
 
-        while (!ao.isDone)
+        while (!ao.isDone || isForcedToLoad)
             await UniTask.Yield();
 
         await LerpFader(1, 0);
 
         ToogleFader(false);
+
+        OnFaderLoaded?.Invoke();
 
         async UniTask LerpFader(int from, int to)
         {

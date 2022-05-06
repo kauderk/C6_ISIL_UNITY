@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: AI Scene
   LoadingScreen: {fileID: 21300028, guid: 16f33df0762854b1b9d862a7564213b4, type: 3}
   Scene:
-    sceneAsset: {fileID: 102900000, guid: 5d7a6890d0d10460bac0d3d1d9962afa, type: 3}
-    scenePath: Assets/SwipeMenu/Scenes/Character Selection Example Scene.unity
+    sceneAsset: {fileID: 102900000, guid: 6ec07b6c56cc7ab4dae7b7d0ebb5d69c, type: 3}
+    scenePath: Assets/Mente Bacata/Scivolo Character Controller/Demo/Scenes/Demo
+      Level.unity
   additiveScenes: []
