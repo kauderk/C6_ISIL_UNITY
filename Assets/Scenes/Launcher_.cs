@@ -6,6 +6,7 @@ using Photon.Pun;
 public class Launcher_ : MonoBehaviourPunCallbacks
 {
     [SerializeField] private PhotonView playerPrefab;
+    [SerializeField] private PhotonView cameraPrefab;
 
     private void Awake()
     {
@@ -29,6 +30,10 @@ public class Launcher_ : MonoBehaviourPunCallbacks
         if (SceneController.Instance)
             SceneController.Instance.isForcedToLoad = false;
         Debug.Log("Ingreso exitoso a sala");
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, .5f, 0), Quaternion.identity);
+        var player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, .5f, 0), Quaternion.identity);
+        if (!cameraPrefab)
+            return;
+        var camera = PhotonNetwork.Instantiate(cameraPrefab.name, new Vector3(0, 0, 0), Quaternion.identity);
+        camera.GetComponent<MenteBacata.ScivoloCharacterControllerDemo.OrbitingCamera>().target = player.transform;
     }
 }
