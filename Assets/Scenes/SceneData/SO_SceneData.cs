@@ -31,7 +31,7 @@ public class SO_SceneData : ScriptableObject
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(SO_SceneData))]
-public class SO_SceneDataInspector : Editor
+public class SO_SceneDataInspector : UnityEditor.Editor
 {
     // public override void OnInspectorGUI()
     // {
