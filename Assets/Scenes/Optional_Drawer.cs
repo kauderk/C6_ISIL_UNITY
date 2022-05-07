@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace Editor
 {
     [CustomPropertyDrawer(typeof(Optional_<>))]
@@ -38,3 +39,4 @@ namespace Editor
         }
     }
 }
+#endif
