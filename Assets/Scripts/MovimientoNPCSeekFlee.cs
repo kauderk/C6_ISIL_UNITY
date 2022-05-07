@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MovimientoNPCSeekFlee : MonoBehaviour
 {
-    public enum TipoMovimiento {seek, flee, pursuit, evasion, arrival, wander, pathFollowing}
+    public enum TipoMovimiento { seek, flee, pursuit, evasion, arrival, wander, pathFollowing }
     [Header("Tipo de Movimiento")]
     public TipoMovimiento tipoMovimiento;
+    public bool useRandomRotation = false;
 
     [Header("Valores Numéricos")]
     [SerializeField] private float fuerzaMasa = 15;
@@ -19,7 +20,7 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
     private Vector3 posicionFuturaObjetivo;
 
     [SerializeField] private float factorReduccion = 0.5f;
-   
+
     //----Wander
     [SerializeField] private float radioMinCirculo = 1f;
     [SerializeField] private float radioMaxCirculo = 5f;
@@ -39,10 +40,10 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
         posicionDeambular = FuerzaAleatoriaDeambular();
 
         listaPuntos = new List<Vector3>();
-        listaPuntos.Add(new Vector3(0,0,0));
-        listaPuntos.Add(new Vector3(5,0,5));
-        listaPuntos.Add(new Vector3(10,0,10));
-        listaPuntos.Add(new Vector3(15,0,15));
+        listaPuntos.Add(new Vector3(0, 0, 0));
+        listaPuntos.Add(new Vector3(5, 0, 5));
+        listaPuntos.Add(new Vector3(10, 0, 10));
+        listaPuntos.Add(new Vector3(15, 0, 15));
 
         indice = 0;
     }
@@ -50,7 +51,7 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
     void Update()
     {
-        switch( (int) tipoMovimiento)
+        switch ((int)tipoMovimiento)
         {
             case 0: Seek(); break;
             case 1: Flee(); break;
@@ -70,12 +71,12 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -88,17 +89,21 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
+
+        if (useRandomRotation)
+            // apply smooth random transform rotation
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(vectorVelocidad), velocidadRotacion * Time.deltaTime);
 
         this.transform.position += -vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
-        Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
+        Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * -10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
 
-        this.transform.Rotate(0,180,0);
+        this.transform.Rotate(0, 180, 0);
     }
 
     private void Pursuit()
@@ -111,12 +116,12 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -131,12 +136,12 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -148,19 +153,19 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
         velocidadDeseada = velocidadDeseada.normalized * velocidadMovimiento;
 
         float distancia = velocidadDeseada.magnitude;
-        float velocidadDisminucion = velocidadMovimiento * (distancia/factorReduccion);
+        float velocidadDisminucion = velocidadMovimiento * (distancia / factorReduccion);
         float velocidadFinal = Mathf.Min(velocidadDisminucion, velocidadMovimiento);
 
         velocidadDeseada = (velocidadDisminucion / distancia) * (target.transform.position - this.transform.position);
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -174,12 +179,12 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -187,13 +192,13 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
     private void PathFollowing()
     {
-        if((listaPuntos[indice] - this.transform.position).magnitude < distanciaPunto)
+        if ((listaPuntos[indice] - this.transform.position).magnitude < distanciaPunto)
         {
             indice++;
-            if(indice == listaPuntos.Count)
+            if (indice == listaPuntos.Count)
             {
                 indice = 0;
-            } 
+            }
             target.transform.position = listaPuntos[indice];
         }
 
@@ -202,12 +207,12 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
         var direccion = velocidadDeseada - vectorVelocidad;
         direccion = Vector3.ClampMagnitude(direccion, velocidadRotacion);
-        direccion /= fuerzaMasa;        
+        direccion /= fuerzaMasa;
 
-        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad+direccion, velocidadMovimiento);
+        vectorVelocidad = Vector3.ClampMagnitude(vectorVelocidad + direccion, velocidadMovimiento);
 
         this.transform.position += vectorVelocidad * Time.deltaTime;
-        this.transform.forward = vectorVelocidad.normalized; 
+        this.transform.forward = vectorVelocidad.normalized;
 
         Debug.DrawRay(this.transform.position, vectorVelocidad.normalized * 10, Color.green);
         Debug.DrawRay(this.transform.position, velocidadDeseada.normalized * 15, Color.black);
@@ -215,16 +220,16 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
     private Vector3 FuerzaDeambular()
     {
-        if(this.transform.position.magnitude > radioMaxCirculo)
+        if (this.transform.position.magnitude > radioMaxCirculo)
         {
             var apuntarCentro = (target.transform.position - this.transform.position).normalized;
             posicionDeambular = vectorVelocidad.normalized + apuntarCentro;
         }
-        else if(Random.value < oportunidadGiro)
+        else if (Random.value < oportunidadGiro)
         {
             posicionDeambular = FuerzaAleatoriaDeambular();
         }
-        return posicionDeambular;   
+        return posicionDeambular;
     }
 
     private Vector3 FuerzaAleatoriaDeambular()
@@ -239,7 +244,7 @@ public class MovimientoNPCSeekFlee : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
             Debug.Log("chocamos");
             Destroy(gameObject);
