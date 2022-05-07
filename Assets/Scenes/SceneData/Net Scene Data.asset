@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5822ccb9c5ee5a541a8bb0b0ef22d7ca, type: 3}
   m_Name: Net Scene Data
   m_EditorClassIdentifier: 
-  Name: NetScene
+  Name: NET Scene
   LoadingScreen: {fileID: 21300010, guid: 16f33df0762854b1b9d862a7564213b4, type: 3}
   Scene:
     sceneAsset: {fileID: 102900000, guid: 94fd00f64d4ff6143b3772eedbf28cf7, type: 3}

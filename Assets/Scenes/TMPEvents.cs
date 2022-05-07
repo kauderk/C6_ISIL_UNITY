@@ -14,9 +14,9 @@ public class TMPEvents : MonoBehaviour
         m_MyEvent?.Invoke();
     }
 
-    public void SetText(ScriptableObject compt)
+    public void SetText(ISObject compt)
     {
         var tmp = gameObject.GetComponent<TextMeshProUGUI>();
-        tmp.text = compt.name;
+        tmp.text = compt.Name;
     }
 }

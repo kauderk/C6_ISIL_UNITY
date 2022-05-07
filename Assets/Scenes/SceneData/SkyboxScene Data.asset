@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5822ccb9c5ee5a541a8bb0b0ef22d7ca, type: 3}
   m_Name: SkyboxScene Data
   m_EditorClassIdentifier: 
-  Name: mainScene
+  Name: DV3D Scene
   LoadingScreen: {fileID: 21300000, guid: e7a0bc9e601074d459ef98d51673b41e, type: 3}
   Scene:
     sceneAsset: {fileID: 102900000, guid: 7540eab4397561d4cb2a37cb06761818, type: 3}

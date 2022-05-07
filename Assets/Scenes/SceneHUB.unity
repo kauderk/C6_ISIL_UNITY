@@ -1095,6 +1095,18 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: LoaderUtils, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 3776620234418390977, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106961430736983130, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_MyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b2ca2cf697c974489de5ecc2e272cdf, type: 2}
+    - target: {fileID: 7624228782297921287, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
 --- !u!4 &1162061577 stripped
@@ -1369,6 +1381,18 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: LoaderUtils, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 3776620234418390977, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106961430736983130, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_MyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: fd0f914ddcd462d4f9242a34be4ca9e1, type: 2}
+    - target: {fileID: 7624228782297921287, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
 --- !u!114 &1361854929 stripped
@@ -1497,6 +1521,26 @@ PrefabInstance:
     - target: {fileID: 11431726, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: LoaderUtils, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620019720341638311, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776620234418390977, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106961430736983130, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106961430736983130, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_MyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 47e603fa136e07a48b6ddce65ead6f9f, type: 2}
+    - target: {fileID: 7624228782297921287, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a9e895e6da348328209b58b7889ae6, type: 3}
