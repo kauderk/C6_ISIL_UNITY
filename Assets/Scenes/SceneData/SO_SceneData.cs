@@ -1,17 +1,17 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+
+public abstract class ISObject : ScriptableObject
+{
+    public string Name;
+}
 
 [ExecuteInEditMode]
 [CreateAssetMenu(fileName = "New Scene Data", menuName = "Scriptable Objects/SceneData")]
-public class SO_SceneData : ScriptableObject
+public class SO_SceneData : ISObject
 {
-    public string Name;
     public Sprite LoadingScreen;
     public SceneReference Scene;
     public List<string> additiveScenes = new List<string>();
@@ -28,14 +28,3 @@ public class SO_SceneData : ScriptableObject
         Debug.Log("UpdateMenuItemOnClick");
     }
 }
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(SO_SceneData))]
-public class SO_SceneDataInspector : Editor
-{
-    // public override void OnInspectorGUI()
-    // {
-    //     Debug.Log("OnInspectorGUI");
-    // }
-}
-#endif
