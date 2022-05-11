@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 78455106}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78455103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.78, z: 0}
+  m_LocalPosition: {x: 0.1, y: -0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -412,7 +412,7 @@ Animator:
   m_GameObject: {fileID: 78455103}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 58c80a30ce6610546ac852eb7c50e2cf, type: 2}
+  m_Controller: {fileID: 9100000, guid: dcb2e93600e6dd24089aeb99563f0b84, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1145,6 +1145,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &629888413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1745434558937884, guid: a01b9805909e902439231051c9f9517b, type: 3}
+  m_PrefabInstance: {fileID: 1603044044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &629888417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629888413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24439345f5a65a946a2622fca4c3d3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701580702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,19 +2907,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668623107821448, guid: a01b9805909e902439231051c9f9517b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7048787
       objectReference: {fileID: 0}
     - target: {fileID: 4668623107821448, guid: a01b9805909e902439231051c9f9517b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.05608951
       objectReference: {fileID: 0}
     - target: {fileID: 4668623107821448, guid: a01b9805909e902439231051c9f9517b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7048787
       objectReference: {fileID: 0}
     - target: {fileID: 4668623107821448, guid: a01b9805909e902439231051c9f9517b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.05608951
       objectReference: {fileID: 0}
     - target: {fileID: 95170962982753516, guid: a01b9805909e902439231051c9f9517b, type: 3}
       propertyPath: m_Enabled
@@ -3532,6 +3549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009140171}
   - component: {fileID: 2009140172}
+  - component: {fileID: 2009140173}
   m_Layer: 0
   m_Name: s6-dv3d-doom-gun
   m_TagString: Untagged
@@ -3546,7 +3564,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009140170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.11931995, y: -0.28273052, z: -0.03547032, w: 0.95108783}
   m_LocalPosition: {x: 0.34, y: -0.84, z: 2.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3604,6 +3622,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2009140173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009140170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24439345f5a65a946a2622fca4c3d3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019870107
 GameObject:
   m_ObjectHideFlags: 0

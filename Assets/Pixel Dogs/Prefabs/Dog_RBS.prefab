@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 95360528354085840}
   - component: {fileID: 114580801485740704}
   - component: {fileID: 114287930774543554}
+  - component: {fileID: -6555078300087027636}
   m_Layer: 0
   m_Name: Dog_RBS
   m_TagString: Dog
@@ -149,3 +150,16 @@ MonoBehaviour:
   sniffTarget: 
   facingDirection: {x: 0, y: 0}
   xOffset: -0.45
+--- !u!114 &-6555078300087027636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525674897565532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24439345f5a65a946a2622fca4c3d3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
