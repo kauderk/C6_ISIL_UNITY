@@ -1,11 +1,16 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Billboard : MonoBehaviour
 {
-    public Camera Camera;
+    private Transform target;
 
-    void Start() => Camera = Camera.main;
+    void Awake()
+    {
+        // find a vaild target
+        target = GameObject.FindGameObjectWithTag("Player").transform ?? Camera.main.transform;
+    }
 
-    void Update() => transform.LookAt(Camera.transform);
+    void Update() => transform.LookAt(target.transform);
 
 }
