@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class MouseMove2D : MonoBehaviour
 {//https://forum.unity.com/threads/make-object-follow-mouse-2d-game.211186/
 
