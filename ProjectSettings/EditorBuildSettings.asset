@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Networking/LauncherLobbyScene.unity
     guid: 191434c67f6cea7439c2db6998dbb042
+  - enabled: 1
+    path: Assets/Free Pixel Art Forest/Demo/s6-dv3d-scene.unity
+    guid: c03ec417bacb48840a2a07a72be16eda
   m_configObjects: {}
