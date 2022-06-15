@@ -8,17 +8,21 @@
 - ## Unity Package:
     - AI (Artificial Intelligence): 
         - [Google Drive](https://drive.google.com/file/d/1wBVXTeIL0Yr-g3zc4nFO8YT6dV3NsLxv/view?usp=sharing)
-        - Refer to this main branch: `e54a95d5b581a04f256c9dc4fbd9a2d6f2970238`
+        - [Commit](e54a95d5b581a04f256c9dc4fbd9a2d6f2970238)
     - NET (Networking): 
         - [Google Drive](https://drive.google.com/file/d/1rsyVNvTMZ-a9EHKqKW8541AwAI0kiJYK/view?usp=sharing)
-        - Refer to this main branch: `e03a9f09b957408bc6933a5d4dbcd744722aed31`
+        - [Commit](https://github.com/kauderk/C6_ISIL_UNITY/commit/e03a9f09b957408bc6933a5d4dbcd744722aed31)
     - DV3D (Desarrollo de Videojuegos 3D): 
         - Session4
             - [Google Drive](https://drive.google.com/file/d/1ksj6iX6Yzx_9cQwC6k4e5PcpZLUqWiUV/view?usp=sharing)
-            - Refer to this main branch: `a61ab588d00c56ea992ad9bec3bbf3eb34b63c51`
+            - [Commit](https://github.com/kauderk/C6_ISIL_UNITY/commit/a61ab588d00c56ea992ad9bec3bbf3eb34b63c51)
         - Session6
             - [Google Drive](https://drive.google.com/file/d/1Yl_EbdP-GsPBxY1iIt-h2ZVHW8HAKJTz/view?usp=sharing)
-            - Refer to this main branch: `1118681e8503b10f15e1af151a1f41c8935daa94`
+            - [Commit](https://github.com/kauderk/C6_ISIL_UNITY/commit/1118681e8503b10f15e1af151a1f41c8935daa94)
+        - Session11 EP3
+            - Github Tag: **[dv3d-s11-ep3](https://github.com/kauderk/C6_ISIL_UNITY/releases/tag/dv3d-s11-ep3)**
+            - Scene: ./Assets/Scenes/dv3d-ep3/ep3-four-rooms.unity
+            - [Commit](https://github.com/kauderk/C6_ISIL_UNITY/commit/77729ef65ecc9079e619489181a6550c46723732)
     - For the most stable version: Download or clone this repository "main branch" [help...](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
     - Scenes Data: Assets/Scenes/SceneData/*.scriptableobjects
         - Main Scene: Assets/Scenes/SceneHUB.unity
