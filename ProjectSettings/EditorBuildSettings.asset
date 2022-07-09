@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/dv3d-ep3/ep3-four-rooms.unity
     guid: 6547e30f1f2c6644c99e3dd63d30bd0f
+  - enabled: 1
+    path: Assets/Scenes/ai-ep4/ep4-path-finding.unity
+    guid: 7b67a4ec910e7794aa191c20d56979e0
   m_configObjects: {}
