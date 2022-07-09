@@ -1,51 +1,82 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class NavCameraController : MonoBehaviour
 {
-    public Camera[] cameras;
-    private int currentCameraIndex;
+    [SerializeField]
+    public List<cameraSet> cameras = new List<cameraSet>();
+    [SerializeField]
+    public Dictionary<cams, Camera> camerasDict = new Dictionary<cams, Camera>();
+    [SerializeField]
+    private cams lastCamera = cams.selection;
+
+    private void Awake()
+    {
+        foreach (cameraSet camera in cameras)
+        {
+            camerasDict[camera.id] = camera.camera;
+        }
+        PointEvents.OnResetPoints += HandleOnResetPoints;
+    }
+    private void Start()
+    {
+        PointEvents.OnStarEndCreated += HandleOnStarEndCreated;
+        EnableCamera(lastCamera = cams.selection);
+    }
+
+    private void HandleOnResetPoints()
+    {
+        EnableCamera(cams.selection);
+        PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.Selecting);
+    }
+
+    private void HandleOnStarEndCreated(GameObject[] obj)
+    {
+        EnableCamera(cams.player);
+        PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.ReadyToMove);
+    }
 
     // Use this for initialization
-    void Start()
+    private void EnableCamera(cams id)
     {
-        currentCameraIndex = 0;
 
-        //Turn all cameras off, except the first default one
-        for (int i = 1; i < cameras.Length; i++)
-        {
-            cameras[i].gameObject.SetActive(false);
-        }
+        if (camerasDict[id].enabled)
+            return; // don't enable the same camera twice
+
+        //Turn all cameras off in camerasDict
+        foreach (var entry in camerasDict)
+            entry.Value.enabled = false;
 
         //If any cameras were added to the controller, enable the first one
-        if (cameras.Length > 0)
-        {
-            cameras[0].gameObject.SetActive(true);
-            Debug.Log("Camera with name: " + cameras[0].camera.name + ", is now enabled");
-        }
+        camerasDict[id].enabled = true;
+
+        Debug.Log("Enabled camera " + id);
+        if (id == cams.selection)
+            PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.Selecting);
+        else
+            PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.ReadyToMove);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //If the c button is pressed, switch to the next camera
-        //Set the camera at the current index to inactive, and set the next one in the array to active
-        //When we reach the end of the camera array, move back to the beginning or the array.
-        if (Input.GetKeyDown(KeyCode.r))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            currentCameraIndex++;
-            if (currentCameraIndex < cameras.Length)
-                NewMethod(currentCameraIndex);
-            else
-                NewMethod(0);
-            Debug.Log("Camera with name: " + cameras[currentCameraIndex].camera.name + ", is now enabled");
+            var nextCamId = (cams)(((int)lastCamera + 1) % cameras.Count);
+            EnableCamera(nextCamId);
         }
     }
-
-    private void NewMethod(int idx)
-    {
-        cameras[idx - 1].gameObject.SetActive(false);
-        currentCameraIndex = idx; // BAD IDEA!!!!!
-        cameras[idx].gameObject.SetActive(true);
-    }
+}
+[System.Serializable]
+public class cameraSet
+{
+    public cams id;
+    public Camera camera;
+}
+[System.Serializable]
+public enum cams
+{
+    player,
+    selection,
 }

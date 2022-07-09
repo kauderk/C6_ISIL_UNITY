@@ -9,51 +9,72 @@ public class NavMeshCharacter : MonoBehaviour
 {
     [SerializeField]
     private Transform destination;
+    private Vector3 chasedPosition;
+    private GameObject[] cashStartEndPoints = new GameObject[1];
 
     NavMeshAgent navMeshAgent;
-    public static Action<NavMesh> OnPathFinding;
 
-    private NavMesh pathState = NavMesh.Idle;
+    private void Awake()
+    {
+        chasedPosition = GetComponent<Transform>().position;
+        PointEvents.OnStarEndCreated += HandleOnStarEndCreated;
+    }
 
     void Start()
     {
+        PointEvents.OnPathFinding += HandleOnPathFinding;
         PointEvents.OnResetPoints += HandleOnOnResetPoints;
-        PointEvents.OnStarEndCreated += HandleOnStarEndCreated;
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetDestination();
         tooglepNavMesh(false);
+    }
+
+    private void HandleOnPathFinding(NavMesh state)
+    {
+        if (state == NavMesh.ReadyToMove && cashStartEndPoints[0] != null)
+        {
+            tooglepNavMesh(true);
+            transform.position = cashStartEndPoints[0].transform.position;
+            SetDestination(cashStartEndPoints[1].transform);
+            // empty cashStartEndPoints
+            cashStartEndPoints[0] = null;
+            cashStartEndPoints[1] = null;
+            PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.Moving);
+        }
     }
 
     private void Update()
     {
         if (ReachedDestination())
         {
+            tooglepNavMesh(false);
             Debug.Log("Reached destination");
-            OnPathFinding?.Invoke(NavMesh.Arrived);
+            PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.Arrived);
         }
     }
 
-    private void HandleOnOnResetPoints(GameObject obj)
+    private void HandleOnOnResetPoints()
     {
+        transform.position = chasedPosition;
         tooglepNavMesh(false);
     }
 
     private void tooglepNavMesh(bool b = true)
     {
         navMeshAgent.enabled = b;
-        var state = b ? NavMesh.Moving : NavMesh.Arrived;
-        OnPathFinding?.Invoke(state);
+        // var state = b ? NavMesh.Moving : NavMesh.Arrived;
+        // PointEvents.OnPathFinding?.Invoke(state);
     }
 
     private void HandleOnStarEndCreated(GameObject[] obj)
     {
-        transform.position = obj[0].transform.position;
-        GetComponent<NavMeshAgent>().SetDestination(obj[1].transform.position);
-        tooglepNavMesh(true);
+        cashStartEndPoints = obj;
     }
 
     public bool ReachedDestination()
     {
+        if (!navMeshAgent.isOnNavMesh)
+            return false;
         // Check if we've reached the destination
         if (!navMeshAgent.pathPending)
         {
@@ -68,8 +89,9 @@ public class NavMeshCharacter : MonoBehaviour
         return false;
     }
 
-    private void SetDestination()
+    private void SetDestination(Transform overrideDes = null)
     {
+        destination = overrideDes ?? destination;
         if (destination != null)
         {
             navMeshAgent.SetDestination(destination.position);
@@ -83,8 +105,8 @@ public class NavMeshCharacter : MonoBehaviour
 }
 public enum NavMesh
 {
-    Idle,
+    Selecting,
     Moving,
     Arrived,
-    Error
+    ReadyToMove
 }
