@@ -49,7 +49,8 @@ public class NavMeshCharacter : MonoBehaviour
         {
             tooglepNavMesh(false);
             Debug.Log("Reached destination");
-            PointEvents.OnPathFinding?.Invoke(PointEvents.GState = NavMesh.Arrived);
+            PointEvents.GState = NavMesh.Arrived;
+            PointEvents.OnResetPoints?.Invoke();
         }
     }
 
